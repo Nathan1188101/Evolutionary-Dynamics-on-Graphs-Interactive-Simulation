@@ -1,3 +1,7 @@
+
+
+
+
 For if I forget. 
 
 Remember: 
@@ -7,4 +11,7 @@ Remember:
 
     then to build it everytime from there as your project changes (don't forget to update CMakeLists.txt):
         -> cmake --build "build-name"
+
+    TO RUN:
+        -> just go to your build folder and run main from there.
 
