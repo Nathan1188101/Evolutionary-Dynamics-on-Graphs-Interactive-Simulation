@@ -10,7 +10,6 @@ find_package(OpenSSL REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
 add_executable(main src/main.cpp src/CircleManager.cpp src/EdgeManager.cpp src/Node.cpp src/ChatWindow.cpp src/SimHUD.cpp src/LLM.cpp) 
-add_executable(messing_around src/messing_around.cpp)
 
 # Required for cpp-httplib on Windows
 if(WIN32)
@@ -34,9 +33,9 @@ if(WIN32)
     target_link_libraries(main PRIVATE ws2_32 crypt32)
 endif()
 
-target_link_libraries(messing_around PRIVATE
-    SFML::Graphics
-    SFML::Window
-    SFML::System
-    TGUI::TGUI 
-)
+# target_link_libraries(messing_around PRIVATE
+#     SFML::Graphics
+#     SFML::Window
+#     SFML::System
+#     TGUI::TGUI 
+# )

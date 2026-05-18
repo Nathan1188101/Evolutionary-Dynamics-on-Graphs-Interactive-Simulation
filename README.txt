@@ -1,4 +1,8 @@
-
+## Setup
+1. Get an API key from Groq
+2. Create a `.env` file in the project root
+3. Add: GROQ_API_KEY=your_key_here
+4. Build and run
 
 
 
