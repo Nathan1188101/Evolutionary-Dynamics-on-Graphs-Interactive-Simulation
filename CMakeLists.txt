@@ -9,7 +9,7 @@ find_package(TGUI REQUIRED)
 find_package(OpenSSL REQUIRED)
 find_package(nlohmann_json REQUIRED)
 
-add_executable(main src/main.cpp src/CircleManager.cpp src/EdgeManager.cpp src/Node.cpp src/ChatWindow.cpp src/SimHUD.cpp src/LLM.cpp) 
+add_executable(main src/main.cpp src/CircleManager.cpp src/EdgeManager.cpp src/Node.cpp src/ChatWindow.cpp src/SimHUD.cpp src/LLM.cpp src/ControlsWindow.cpp) 
 
 # Required for cpp-httplib on Windows
 if(WIN32)

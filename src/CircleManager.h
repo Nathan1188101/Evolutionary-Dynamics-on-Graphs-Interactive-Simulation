@@ -1,6 +1,6 @@
 #pragma once 
 #include<SFML/Graphics.hpp>
-#include "node.h"
+#include "Node.h"
 
 class CircleManager {
     public: 

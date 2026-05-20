@@ -3,18 +3,15 @@
 #include<TGUI/TGUI.hpp> // ui 
 #include<TGUI/Backend/SFML-Graphics.hpp>
 
-class controlsWindow {
+class ControlsWindow {
     public:
         ControlsWindow(tgui::Gui& gui, float x, float y, float width, float height);
         void toggle(); 
         void setVisible(bool visible);
-        void
+        bool isVisible() const;
 
     private: 
         // make the things that make up the window private, shouldn't be edited else where
         tgui::ChildWindow::Ptr controlsWindowContainer;
-        tgui::Panel::Ptr panel
-        
-
-
-}
+        tgui::Panel::Ptr panel;
+};

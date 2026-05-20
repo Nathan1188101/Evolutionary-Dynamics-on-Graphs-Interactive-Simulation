@@ -11,6 +11,7 @@
 #include"EdgeManager.h" 
 #include"SimHUD.h" 
 #include"LLM.h" 
+#include"ControlsWindow.h"
 
 // should move this somewhere else at some point, maybe into edge manager because it has access to the circle manager 
 // but not sure that feels right still, maybe it's own class at some point idk 
@@ -123,7 +124,7 @@ int main() {
     EdgeManager edgeManager(manager);  
     SimHUD hud; 
 
-    // create TGUI instance?  
+    // create TGUI instance 
     tgui::Gui gui{window};
     // TGUI button 
     auto button = tgui::Button::create("LLM"); // make a button 
@@ -143,7 +144,7 @@ int main() {
 
     // TGUI button
     auto controls_button = tgui::Button::create("Controls");
-    controls_button->setPosition({width - 100, 50});
+    controls_button->setPosition({width - 220, 10});
     controls_button->setSize(100, 50);
     auto controlButtonRenderer = controls_button->getSharedRenderer();
     controlButtonRenderer->setBackgroundColor(tgui::Color(30, 30, 35));
@@ -157,8 +158,15 @@ int main() {
     controlButtonRenderer->setTextColorDown(tgui::Color::White);  
     gui.add(controls_button);
 
+    ControlsWindow controlsWindow(gui, 100, 100, 300, 350);
+
+    // handle the click 
+    controls_button->onPress([&controlsWindow](){
+        controlsWindow.toggle();
+    });
 
     // Create ChatWindow instance (now draggable)
+    // SHOULD MOVE THIS STUFF INTO IT'S OWN FILE (the window structure stuff)
     ChatWindow chat(gui, 400, 100, 300, 500);
     // Toggle visibility of chat window when LLM button is clicked
     button->onPress([&chat]() {
@@ -182,8 +190,7 @@ int main() {
     sliderLabel->setPosition((width / 2) - (size.x / 2), 20);
     slider->setPosition((width / 2) - (size.x / 2), 0);
     gui.add(sliderLabel); 
-    
-    
+
     std::string apiKey = loadKey();
     if (apiKey.empty()) {
         // return error 
@@ -209,6 +216,13 @@ int main() {
     hud.loadFont("assets/arial/ARIAL.TTF"); 
     hud.setOffset({15.0f, 15.0f}); 
 
+
+    // --------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
+    // -------------------  MAIN WINDoW PROCESSES BELOW ------------------------- 
+    // --------------------------------------------------------------------------
+    // --------------------------------------------------------------------------
+
     while (window.isOpen()) {
         while (auto ev = window.pollEvent()) {
 
@@ -225,6 +239,7 @@ int main() {
 
                 auto size = window.getSize();
                 button->setPosition({float(size.x) - 100, 0.0f});
+                controls_button->setPosition({float(size.x) - 210, 0.0f});
                 slider->setPosition({float(size.x) / 2.0, 0.0f}); 
                 sliderLabel->setPosition({float(size.x) / 2.0f, 20.0f});
 
