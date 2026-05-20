@@ -1,20 +1,39 @@
 ## Setup
-1. Get an API key from Groq
-2. Create a `.env` file in the project root
-3. Add: GROQ_API_KEY=your_key_here
-4. Build and run
 
+### Prerequisites
+- CMake 3.16+
+- C++17 compiler
+- SFML 3
+- TGUI
+- OpenSSL
+- nlohmann_json
 
-For if I forget. 
+### Getting Started
 
-Remember: 
+1. **Get a Groq API Key**
+   - Visit [Groq Console](https://console.groq.com)
+   - Sign up and create an API key
 
-    to build project for first time run: 
-        -> cmake -S . -B "build-name"
+2. **Configure Environment**
+   - Copy `.env.example` to `.env`: `cp .env.example .env`
+   - Edit `.env` and add your API key: `GROQ_API_KEY=your_actual_key`
 
-    then to build it everytime from there as your project changes (don't forget to update CMakeLists.txt):
-        -> cmake --build "build-name"
+3. **Build**
+   - First time: `cmake -S . -B "build-name"`
+   - Build: `cmake --build "build-name"`
 
-    TO RUN:
-        -> just go to your build folder and run main from there.
+4. **Run**
+   - `./"build-name"/main`
+
+## Controls
+- **E** - Place node
+- **C** - Set cooperator
+- **F** - Set defector
+- **G** - Place grid
+- **Space** - Play/pause simulation
+- **Backspace** - Delete all & restart
+- **A/D** - Move camera left/right
+- **W/S** - Move camera up/down
+- **Scroll** - Zoom in/out
+- **Right Click + Drag** - Connect edges
 
